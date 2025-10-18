@@ -1,4 +1,4 @@
-name: COBOL CI/CD Workflow
+name: COBOL code with file
 
 on:
   push:
