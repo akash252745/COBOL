@@ -1,1 +1,44 @@
+name: COBOL CI/CD Workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout your repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install GnuCOBOL
+      - name: Install GnuCOBOL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y open-cobol
+
+      # Step 3: Compile COBOL program
+      # Replace 'myprog.cob' with the actual COBOL source filename
+      - name: Compile COBOL program
+        run: cobc -x myprog.cob -o myprog.out
+
+      # Step 4: Run the COBOL program
+      # Assuming it uses file1.txt and file2.txt as input
+      - name: Run COBOL program
+        run: |
+          chmod +x myprog.out
+          ./myprog.out
+
+      # Step 5: Upload output files (file3.txt, file4.txt, file5.txt)
+      - name: Upload COBOL output files
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobol-output-files
+          path: |
+            file3.txt
+            file4.txt
+            file5.txt
 
