@@ -17,7 +17,7 @@ jobs:
       - name: Install GnuCOBOL compiler
         run: |
           sudo apt-get update
-          sudo apt-get install -y open-cobol
+          sudo apt-get install -y gnucobol
 
       - name: Verify COBOL and input files
         run: |
