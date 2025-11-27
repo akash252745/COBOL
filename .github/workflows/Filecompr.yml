@@ -34,7 +34,7 @@ jobs:
       - name: Compile COBOL program
         run: |
           echo "Compiling Filecompr.cob..."
-          cobc -x Filecompr.cob -o Filecompr.exe
+          cobc -x -o Filecompr.cob -o Filecompr
           echo "Compilation complete"
           ls -l Filecompr
 
