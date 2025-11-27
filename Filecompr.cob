@@ -44,7 +44,7 @@
           BLOCK CONTAINS 800 CHARACTERS
           RECORDING MODE IS F.
        01 POLICY-DETAILS-IN2.
-          05 POLICY-NUMBER12    PIC 9(05).
+          05 POLICY-NUMBERI2    PIC 9(05).
           05 FILLER             PIC X(75).
 
        FD POLICY-OUT1
@@ -184,7 +184,7 @@
        2500-READ-INPUT-FILE2.
            READ POLICY-IN2
                  AT END
-                     MOVE 'Y' TO WS-E0F2
+                     MOVE 'Y' TO WS-EOF2
                  NOT AT END
                      CONTINUE
             END-READ.
@@ -196,14 +196,14 @@
 
        3000-PROCESS.
            EVALUATE TRUE
-               WHEN POLICY-NUMBERI1 = POLICY-NUMBERI2
+                WHEN POLICY-NUMBERI1 = POLICY-NUMBERI2
                      PERFORM 3200-WRITE-MATCH-PARA THRU 3200-EXIT.
                      PERFORM 2000-READ-INPUT-FILE1 THRU 2000-EXIT.
                      PERFORM 2500-READ-INPUT-FILE2 THRU 2500-EXIT.
-               WHEN POLICY-NUMBERI1 > POLICY-NUMBERI2
+                WHEN POLICY-NUMBERI1 > POLICY-NUMBERI2
                      PERFORM 3210-WRITE-ONLY-FILE2 THRU 3210-EXIT.
                      PERFORM 2500-READ-INPUT-FILE2 THRU 2500-EXIT.
-               WHEN POLICY-NUMBERI1 < POLICY-NUMBERI2
+                WHEN POLICY-NUMBERI1 < POLICY-NUMBERI2
                      PERFORM 3220-WRITE-ONLY-FILE1 THRU 3220-EXIT.
                      PERFORM 2000-READ-INPUT-FILE1 THRU 2000-EXIT.
            END-EVALUATE.
