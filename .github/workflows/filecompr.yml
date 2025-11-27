@@ -1,10 +1,10 @@
-name: Compile and Run COBOL Program - FILECOMPR
+name: Compile and Run COBOL Program - FileCOMPR
 
 on:
   workflow_dispatch:     # allows manual run from GitHub Actions tab
   push:
     paths:
-      - 'Filecompr.cob'  # optional: auto-run when COBOL file changes
+      - 'Filecompr.cob'  # optional: auto-run when COBOL File changes
 
 jobs:
   run-cobol:
@@ -19,36 +19,36 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gnucobol
 
-      - name: Verify COBOL and input files
+      - name: Verify COBOL and input Files
         run: |
-          echo "Listing repository files:"
+          echo "Listing repositoryFiles:"
           ls -l
           echo ""
           echo "Hostname: $(hostname), Path: $(pwd)" $HOME
           echo ""
-          echo "Verifying COBOL and input files exist:"
-          if [ -f "Filecompr.cob" ]; then echo "Filecompr.cob found"; else echo " COBOL file missing"; fi
+          echo "Verifying COBOL and input Files exist:"
+          if [ -f "Filecompr.cob" ]; then echo "Filecompr.cob found"; else echo " COBOL File missing"; fi
           if [ -f "File1.txt" ]; then echo "File1.txt found"; else echo " File1.txt missing"; fi
           if [ -f "File2.txt" ]; then echo "File2.txt found"; else echo " File2.txt missing"; fi
 
       - name: Compile COBOL program
         run: |
           echo "Compiling Filecompr.cob..."
-          cobc -x Filecompr.cob -o filecompr.exe
+          cobc -x Filecompr.cob -o Filecompr.exe
           echo "Compilation complete"
-          ls -l filecompr
+          ls -l Filecompr
 
       - name: Run COBOL program
         run: |
           echo "Executing COBOL program..."
-          ./filecompr
+          ./Filecompr
           echo "Execution complete"
 
-      - name: Display output files
+      - name: Display output Files
         run: |
           echo ""
           echo "---- Output Files Generated ----"
-          ls -l File3.txt File4.txt File5.txt || echo "Some output files may be missing."
+          ls -l File3.txt File4.txt File5.txt || echo "Some output Files may be missing."
           echo ""
           for f in File3.txt File4.txt File5.txt; do
             if [ -f "$f" ]; then
