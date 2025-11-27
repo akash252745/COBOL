@@ -73,7 +73,7 @@
 
        WORKING-STORAGE SECTION.
        01 WS-EOF1                 PIC X(01).
-       01 WS-E0F2                 PIC X(01).
+       01 WS-EOF2                 PIC X(01).
        01 WS-INPUT-REC1-COUNT   PIC 9(02).
        01 WS-INPUT-REC2-COUNT   PIC 9(02).
        01 WS-OUTPUT-REC1-COUNT  PIC 9(02).
@@ -196,7 +196,7 @@
 
        3000-PROCESS.
            EVALUATE TRUE
-               WHEN POLICY-NUMBERI1 WHEN POLICY-NUMBERI2
+               WHEN POLICY-NUMBERI1 = POLICY-NUMBERI2
                      PERFORM 3200-WRITE-MATCH-PARA THRU 3200-EXIT.
                      PERFORM 2000-READ-INPUT-FILE1 THRU 2000-EXIT.
                      PERFORM 2500-READ-INPUT-FILE2 THRU 2500-EXIT.
@@ -215,7 +215,7 @@
            MOVE POLICY-NUMBERI1 TO POLICY-NUMBERO1
            WRITE POLICY-DETAILS-OUT1.
            EVALUATE WS-FIL-ST3
-               WHEN O
+               WHEN 0
                    DISPLAY 'OUT FILE WRITING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'OUT FILE WRITING FAILED IN 3200-PARA'
@@ -228,10 +228,10 @@
            EXIT.
 
        3210-WRITE-ONLY-FILE2.
-           MOVE POLICY-NUMBERI2 TO POLICY-NUMBER02
+           MOVE POLICY-NUMBERI2 TO POLICY-NUMBERO2
            WRITE POLICY-DETAILS-OUT2.
            EVALUATE WS-FIL-ST3
-               WHEN O
+               WHEN 0
                    DISPLAY 'OUT FILE WRITING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'OUT FILE WRITING FAILED IN 3210-PARA'
@@ -244,10 +244,10 @@
            EXIT.
 
        3220-WRITE-ONLY-FILE1.
-           MOVE POLICY-NUMBERI1 TO POLICY-NUMBER03
+           MOVE POLICY-NUMBERI1 TO POLICY-NUMBERO3
            WRITE POLICY-DETAILS-OUT3.
            EVALUATE WS-FIL-ST5
-               WHEN O
+               WHEN 0
                    DISPLAY 'OUT FILE WRITING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'OUT FILE WRITING FAILED IN 3220-PARA'
@@ -262,7 +262,7 @@
        9000-SUMMARY.
            CLOSE POLICY-IN1
            EVALUATE WS-FIL-ST1
-               WHEN O
+               WHEN 0
                    DISPLAY 'FILE CLOSING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'FILE CLOSING FAILED IN 9000-PARA'
@@ -272,7 +272,7 @@
 
            CLOSE POLICY-IN2
            EVALUATE WS-FIL-ST2
-               WHEN O
+               WHEN 0
                    DISPLAY 'FILE CLOSING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'FILE CLOSING FAILED IN 9000-PARA'
@@ -280,9 +280,9 @@
                    CALL WS-ABEND-PGM
            END-EVALUATE.
 
-           CLOSE POLICY-OUT 1
+           CLOSE POLICY-OUT1
            EVALUATE WS-FIL-ST3
-               WHEN O
+               WHEN 0
                    DISPLAY 'FILE CLOSING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'FILE CLOSING FAILED IN 9000-PARA'
@@ -292,7 +292,7 @@
 
            CLOSE POLICY-OUT2
            EVALUATE WS-FIL-ST4
-               WHEN O
+               WHEN 0
                    DISPLAY 'FILE CLOSING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'FILE CLOSING FAILED IN 9000-PARA'
@@ -302,7 +302,7 @@
 
            CLOSE POLICY-OUT3
            EVALUATE WS-FIL-ST5
-               WHEN O
+               WHEN 0
                    DISPLAY 'FILE CLOSING IS SUCCESSFUL'
                WHEN OTHER
                    DISPLAY 'FILE CLOSING FAILED IN 9000-PARA'
@@ -310,12 +310,12 @@
                    CALL WS-ABEND-PGM
            END-EVALUATE.
 
-           DISPLAY '==> TOTAL NUMBER OF INPUT1 RECORDS : ' WS-INPUT-REC1-COUNT.
-           DISPLAY '==> TOTAL NUMBER OF INPUT2 RECORDS : ' WS-INPUT-REC2-COUNT.
-           DISPLAY '==> TOTAL NUMBER OF MATCH RECORDS  : ' WS-OUTPUT-REC1-COUNT.
-           DISPLAY '==> TOTAL NUMBER OF ONLYF2 RECORDS : ' WS-OUTPUT-REC2-COUNT.
-           DISPLAY '==> TOTAL NUMBER OF ONLYF1 RECORDS : ' WS-OUTPUT-REC3-COUNT.
-           DISPLAY  '* END OF FILECMPR PROGRAM *'
+           DISPLAY 'TOTAL NUMBER OF INPUT1 RECORDS:'WS-INPUT-REC1-COUNT.
+           DISPLAY 'TOTAL NUMBER OF INPUT2 RECORDS:'WS-INPUT-REC2-COUNT.
+           DISPLAY 'TOTAL NUMBER OF MATCH RECORDS:'WS-OUTPUT-REC1-COUNT.
+           DISPLAY 'TOTAL NUMBER OF ONLYF2 RECORDS:'WS-OUTPUT-REC2-COUNT.
+           DISPLAY 'TOTAL NUMBER OF ONLYF1 RECORDS:'WS-OUTPUT-REC3-COUNT.
+           DISPLAY  '* END OF FILECMPR PROGRAM *'.
 
        9000-EXIT.
            EXIT.
