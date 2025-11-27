@@ -25,14 +25,14 @@ jobs:
           ls -l
           echo ""
           echo "Verifying COBOL and input files exist:"
-          if [ -f "filecompr.cob" ]; then echo "filecompr.cob found"; else echo " COBOL file missing"; fi
-          if [ -f "file1.txt" ]; then echo "file1.txt found"; else echo " file1.txt missing"; fi
-          if [ -f "file2.txt" ]; then echo "file2.txt found"; else echo " file2.txt missing"; fi
+          if [ -f "Filecompr.cob" ]; then echo "Filecompr.cob found"; else echo " COBOL file missing"; fi
+          if [ -f "File1.txt" ]; then echo "File1.txt found"; else echo " File1.txt missing"; fi
+          if [ -f "File2.txt" ]; then echo "File2.txt found"; else echo " File2.txt missing"; fi
 
       - name: Compile COBOL program
         run: |
-          echo "Compiling filecompr.cob..."
-          cobc -x filecompr.cob -o filecompr.exe
+          echo "Compiling Filecompr.cob..."
+          cobc -x Filecompr.cob -o filecompr.exe
           echo "Compilation complete"
           ls -l filecompr
 
@@ -46,9 +46,9 @@ jobs:
         run: |
           echo ""
           echo "---- Output Files Generated ----"
-          ls -l file3.txt file4.txt file5.txt || echo "Some output files may be missing."
+          ls -l File3.txt File4.txt File5.txt || echo "Some output files may be missing."
           echo ""
-          for f in file3.txt file4.txt file5.txt; do
+          for f in File3.txt File4.txt File5.txt; do
             if [ -f "$f" ]; then
               echo "===== Contents of $f ====="
               cat "$f"
