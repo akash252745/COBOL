@@ -34,12 +34,16 @@ jobs:
       - name: Compile COBOL program
         run: |
           echo "Compiling Filecompr.cob..."
-          cobc -x -o Filecompr.cob -o Filecompr
+          cd ${{ github.workspace }}
+          ls -l
+          cobc -x -o Filecompr Filecompr.cob
+          chmod +x Filecompr
           echo "Compilation complete"
           ls -l Filecompr
 
       - name: Run COBOL program
         run: |
+          cd ${{ github.workspace }}
           echo "Executing COBOL program..."
           ./Filecompr
           echo "Execution complete"
