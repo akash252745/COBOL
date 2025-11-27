@@ -36,8 +36,8 @@
           BLOCK CONTAINS 800 CHARACTERS
           RECORDING MODE IS F.
        01 POLICY-DETAILS-IN1.
-          05 POLICY-NUMBERI1    PIC 9 (05).
-          05 FILLER               PIC X (75).
+          05 POLICY-NUMBERI1    PIC 9(05).
+          05 FILLER             PIC X(75).
 
        FD POLICY-IN2
           RECORD CONTAINS 80 CHARACTERS
@@ -45,23 +45,23 @@
           RECORDING MODE IS F.
        01 POLICY-DETAILS-IN2.
           05 POLICY-NUMBER12    PIC 9(05).
-          05 FILLER               PIC X (75).
+          05 FILLER             PIC X(75).
 
        FD POLICY-OUT1
           RECORD CONTAINS 80 CHARACTERS
           BLOCK CONTAINS 800 CHARACTERS
           RECORDING MODE IS F.
        01 POLICY-DETAILS-OUT1.
-          05 POLICY-NUMBER01    PIC 9 (05).
-          05 FILLER               PIC X (75).
+          05 POLICY-NUMBER01    PIC 9(05).
+          05 FILLER               PIC X(75).
 
        FD POLICY-OUT2
           RECORD CONTAINS 80 CHARACTERS
           BLOCK CONTAINS 800 CHARACTERS
           RECORDING MODE IS F.
        01 POLICY-DETAILS-OUT2.
-          05 POLICY-NUMBERO2    PIC 9 (05).
-          05 FILLER               PIC X (75).
+          05 POLICY-NUMBERO2    PIC 9(05).
+          05 FILLER               PIC X(75).
 
        FD POLICY-OUT3
           RECORD CONTAINS 80 CHARACTERS
@@ -69,24 +69,24 @@
           RECORDING MODE IS F.
        01 POLICY-DETAILS-OUT3.
           05 POLICY-NUMBERO3    PIC 9(05).
-          05 FILLER               PIC X (75).
+          05 FILLER               PIC X(75).
 
        WORKING-STORAGE SECTION.
-       01 WS-EOF1                 PIC X (01).
-       01 WS-E0F2                 PIC X (01).
-       01 WS-INPUT-REC1-COUNT   PIC 9 (02).
+       01 WS-EOF1                 PIC X(01).
+       01 WS-E0F2                 PIC X(01).
+       01 WS-INPUT-REC1-COUNT   PIC 9(02).
        01 WS-INPUT-REC2-COUNT   PIC 9(02).
-       01 WS-OUTPUT-REC1-COUNT  PIC 9 (02).
-       01 WS-OUTPUT-REC2-COUNT  PIC 9 (02).
+       01 WS-OUTPUT-REC1-COUNT  PIC 9(02).
+       01 WS-OUTPUT-REC2-COUNT  PIC 9(02).
        01 WS-OUTPUT-REC3-COUNT  PIC 9(02).
-       01 WS-VALID-RECORD        PIC X (01)
+       01 WS-VALID-RECORD        PIC X(01).
        01 WS-AGE-IN               PIC 9(03).
-       01 WS-FIL-ST1              PIC 9 (02).
-       01 WS-FIL-ST2              PIC 9 (02).
+       01 WS-FIL-ST1              PIC 9(02).
+       01 WS-FIL-ST2              PIC 9(02).
        01 WS-FIL-ST3              PIC 9(02).
-       01 WS-FIL-ST4              PIC 9 (02).
-       01 WS-FIL-ST5              PIC 9 (02).
-       01 WS-ABEND-PGM           PIC X (10) VALUE 'ABENDPG1'.
+       01 WS-FIL-ST4              PIC 9(02).
+       01 WS-FIL-ST5              PIC 9(02).
+       01 WS-ABEND-PGM           PIC X(10) VALUE 'ABENDPG1'.
 
        PROCEDURE DIVISION.
        0000-MAIN-PARA.
