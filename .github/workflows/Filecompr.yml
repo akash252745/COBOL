@@ -1,4 +1,4 @@
-name: Compile and Run COBOL Program - FileCOMPR
+name: Compile and Run COBOL Program - Filecompr
 
 on:
   workflow_dispatch:     # allows manual run from GitHub Actions tab
