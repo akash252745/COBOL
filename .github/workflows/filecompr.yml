@@ -4,7 +4,7 @@ on:
   workflow_dispatch:     # allows manual run from GitHub Actions tab
   push:
     paths:
-      - 'filecompr.cob'  # optional: auto-run when COBOL file changes
+      - 'Filecompr.cob'  # optional: auto-run when COBOL file changes
 
 jobs:
   run-cobol:
