@@ -24,6 +24,8 @@ jobs:
           echo "Listing repository files:"
           ls -l
           echo ""
+          echo "Hostname: $(hostname), Path: $(pwd)" $HOME
+          echo ""
           echo "Verifying COBOL and input files exist:"
           if [ -f "Filecompr.cob" ]; then echo "Filecompr.cob found"; else echo " COBOL file missing"; fi
           if [ -f "File1.txt" ]; then echo "File1.txt found"; else echo " File1.txt missing"; fi
